@@ -9,3 +9,6 @@ dist/
 
 # ffmpeg, ffprobe and deno binaries: too big for git, see README
 vendor/bin/
+
+# Installer output
+installer/Output/

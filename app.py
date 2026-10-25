@@ -17,7 +17,7 @@ from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 APP_NAME = 'Sonora'
-VERSION = '1.2.0'
+VERSION = '1.3.0'
 FROZEN = getattr(sys, 'frozen', False)
 BASE = Path(getattr(sys, '_MEIPASS', Path(__file__).parent))
 BIN = BASE / 'bin'

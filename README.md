@@ -12,6 +12,14 @@ A small Windows app for saving songs and playlists from YouTube and YouTube Musi
 
 Built with [yt-dlp](https://github.com/yt-dlp/yt-dlp) and [pywebview](https://pywebview.flowrl.com/).
 
+## Download
+
+Get `Sonora-Setup-<version>.exe` from the [latest release](https://github.com/MinecraftUser21/Sonora/releases/latest) and run it. It installs for your Windows account without asking for admin rights, and adds Sonora to the Start menu.
+
+Windows may show a SmartScreen warning because the installer isn't code-signed. Click **More info**, then **Run anyway**.
+
+Sonora needs the Microsoft Edge WebView2 Runtime. Windows 11 already has it; on Windows 10 the installer tells you if it's missing.
+
 ## Running from source
 
 Requires Windows 10 or 11 and Python 3.12 or newer.
@@ -23,7 +31,7 @@ python -m venv .venv
 
 Sonora needs `ffmpeg.exe`, `ffprobe.exe` (with their DLLs) and `deno.exe` in `vendor\bin`. They are too large to keep in git, so download them yourself:
 
-- ffmpeg shared build: https://www.gyan.dev/ffmpeg/builds/ (copy everything in its `bin` folder)
+- ffmpeg: a GPL shared build from https://github.com/BtbN/FFmpeg-Builds/releases (`ffmpeg-master-latest-win64-gpl-shared.zip`, copy everything in its `bin` folder)
 - deno: https://github.com/denoland/deno/releases (`deno-x86_64-pc-windows-msvc.zip`)
 
 Then start it:
@@ -41,6 +49,14 @@ Add `--debug` to open the WebView developer tools.
 ```
 
 The app lands in `dist\Sonora`.
+
+To make the installer, install [Inno Setup 6](https://jrsoftware.org/isinfo.php) and run:
+
+```bash
+"%LOCALAPPDATA%\Programs\Inno Setup 6\ISCC.exe" installer\Sonora.iss
+```
+
+The installer lands in `installer\Output`. Keep the version in `installer\Sonora.iss` in step with `VERSION` in `app.py`.
 
 ## Where Sonora keeps things
 

@@ -1,0 +1,33 @@
+Sonora includes the following third-party software.
+
+FFmpeg (ffmpeg.exe, ffprobe.exe and the av*/sw* DLLs in _internal\bin)
+  Copyright (c) 2000-2026 the FFmpeg developers
+  Licensed under the GNU General Public License, version 3 or later (GPL-3.0-or-later).
+  This is an unmodified build from https://github.com/BtbN/FFmpeg-Builds
+  (FFmpeg git revision adfe258a6a, built 2026-10-21).
+  Source code: https://github.com/FFmpeg/FFmpeg/tree/adfe258a6a
+  Build scripts: https://github.com/BtbN/FFmpeg-Builds
+  Licence text: https://www.gnu.org/licenses/gpl-3.0.txt
+
+Deno (deno.exe in _internal\bin)
+  Copyright (c) 2018-2026 the Deno authors
+  MIT License: https://github.com/denoland/deno/blob/main/LICENSE.md
+
+yt-dlp
+  Released into the public domain (The Unlicense): https://github.com/yt-dlp/yt-dlp
+
+pywebview
+  Copyright (c) Roman Sirokov and contributors
+  BSD 3-Clause License: https://github.com/r0x0r/pywebview/blob/master/LICENSE
+
+Mutagen
+  GPL-2.0-or-later: https://github.com/quodlibet/mutagen
+
+anyascii
+  ISC License: https://github.com/anyascii/anyascii
+
+Python
+  Python Software Foundation License: https://docs.python.org/3/license.html
+
+Inter typeface
+  SIL Open Font License 1.1: https://github.com/rsms/inter
