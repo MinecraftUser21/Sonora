@@ -14,7 +14,12 @@ Built with [yt-dlp](https://github.com/yt-dlp/yt-dlp) and [pywebview](https://py
 
 ## Download
 
-Get `Sonora-Setup-<version>.exe` from the [latest release](https://github.com/MinecraftUser21/Sonora/releases/latest) and run it. It installs for your Windows account without asking for admin rights, and adds Sonora to the Start menu.
+**[Download Sonora for Windows](https://github.com/MinecraftUser21/Sonora/releases/latest)**: install it and use it. Nothing else to install: Python, yt-dlp, ffmpeg and everything Sonora needs are packed inside the app.
+
+- `Sonora-Setup-<version>.exe`: the installer. It installs for your Windows account without asking for admin rights and adds Sonora to the Start menu.
+- `Sonora-<version>-Windows-Portable.zip`: no install. Unzip it anywhere, even a USB stick, and run `Sonora.exe`.
+
+Looking for the phone app? See [Sonora for Android](https://github.com/MinecraftUser21/Sonora-Android).
 
 Windows may show a SmartScreen warning because the installer isn't code-signed. Click **More info**, then **Run anyway**.
 
@@ -22,7 +27,7 @@ Sonora needs the Microsoft Edge WebView2 Runtime. Windows 11 already has it; on 
 
 ## Running from source
 
-Requires Windows 10 or 11 and Python 3.12 or newer.
+Only needed if you want to change the code. Requires Windows 10 or 11 and Python 3.12 or newer.
 
 ```bash
 python -m venv .venv
