@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sonora</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="themes.js"></script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3.5 7a2 2 0 0 1 2-2h4l2 2.2h7a2 2 0 0 1 2 2V17a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/></symbol>
+      <symbol id="i-usb" viewBox="0 0 24 24"><rect x="7" y="9" width="10" height="12" rx="2"/><path d="M9 9V4h6v5M10.5 6h.01M13.5 6h.01"/></symbol>
+      <symbol id="i-list" viewBox="0 0 24 24"><path d="M4 6h11M4 11h11M4 16h7"/><circle cx="17.5" cy="16.5" r="2.5"/><path d="M20 16.5V8l-2-1"/></symbol>
+      <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></symbol>
+      <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3.5 12.2V5a1.5 1.5 0 0 1 1.5-1.5h7.2l8.3 8.3a1.5 1.5 0 0 1 0 2.1l-6.4 6.4a1.5 1.5 0 0 1-2.1 0z"/><circle cx="8.5" cy="8.5" r="1.3"/></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.3 2.4 3.4 5.2 3.4 8.5s-1.1 6.1-3.4 8.5c-2.3-2.4-3.4-5.2-3.4-8.5s1.1-6.1 3.4-8.5z"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 4l2.4 5 5.4.7-4 3.7 1 5.4L12 16.2 7.2 18.8l1-5.4-4-3.7 5.4-.7z"/></symbol>
+      <symbol id="i-stack" viewBox="0 0 24 24"><path d="M4 8l8-4 8 4-8 4zM4 12.5l8 4 8-4M4 16.5l8 4 8-4"/></symbol>
+      <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16v-3.5l1.8-5A2 2 0 0 1 7.7 6h8.6a2 2 0 0 1 1.9 1.5l1.8 5V16a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zM4.5 12.5h15"/><circle cx="7.5" cy="14.5" r=".6"/><circle cx="16.5" cy="14.5" r=".6"/><path d="M6.5 17v2M17.5 17v2"/></symbol>
+      <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+      <symbol id="i-down" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M5.5 12.5l4.2 4L18.5 7.5"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12"/></symbol>
+      <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 0 0 0 17c1.2 0 1.9-.8 1.9-1.8 0-.5-.2-.9-.5-1.3-.3-.3-.5-.8-.5-1.3 0-1 .8-1.8 1.9-1.8h2.2a3.9 3.9 0 0 0 3.9-3.9C20.9 6.9 16.9 3.5 12 3.5z"/><circle cx="7.6" cy="11.5" r="1.1"/><circle cx="10" cy="7.6" r="1.1"/><circle cx="14.6" cy="7.6" r="1.1"/></symbol>
+      <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M5 19l1-4L15.5 5.5a2.1 2.1 0 0 1 3 3L9 18z"/></symbol>
+      <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
+    </defs>
+  </svg>
+
+  <header class="titlebar pywebview-drag-region">
+    <div class="brand pywebview-drag-region">
+      <span class="brand-tile">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.2" class="fill"/></svg>
+      </span>
+      <span>Sonora</span>
+    </div>
+    <div class="titlebar-actions">
+      <button class="theme-btn" id="themeBtn" aria-haspopup="dialog" aria-label="Themes" title="Themes">
+        <svg viewBox="0 0 24 24"><use href="#i-palette"/></svg>
+      </button>
+      <button class="account-chip" id="accountChip" aria-haspopup="dialog" aria-expanded="false">
+        <span class="account-dot"></span>
+        <span id="accountLabel">Sign in</span>
+      </button>
+      <div class="window-controls">
+        <button class="wc" id="wcMin" aria-label="Minimize"><svg viewBox="0 0 12 12"><path d="M2 6h8"/></svg></button>
+        <button class="wc" id="wcMax" aria-label="Maximize"><svg viewBox="0 0 12 12"><rect x="2.5" y="2.5" width="7" height="7" rx="1"/></svg></button>
+        <button class="wc wc-close" id="wcClose" aria-label="Close"><svg viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="popover" id="accountPop" role="dialog" aria-label="YouTube account" hidden>
+    <div id="popSignedOut">
+      <h3>Connect your YouTube account</h3>
+      <p>Needed for your liked songs and private playlists. Sonora keeps the sign-in cookies on this PC only.</p>
+      <button class="btn btn-primary btn-wide" id="btnSignIn"><span class="btn-label">Sign in to YouTube</span></button>
+      <div class="pop-alt">
+        <span>Other ways</span>
+        <div class="pop-alt-row">
+          <button class="btn btn-quiet" id="btnImport">Import cookies.txt</button>
+          <select id="browserPick" aria-label="Read cookies from a browser">
+            <option value="">From a browser…</option>
+            <option value="firefox">Firefox</option>
+            <option value="chrome">Chrome</option>
+            <option value="edge">Edge</option>
+            <option value="brave">Brave</option>
+            <option value="opera">Opera</option>
+            <option value="vivaldi">Vivaldi</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div id="popSignedIn" hidden>
+      <h3>You're signed in</h3>
+      <p id="accountSince"></p>
+      <button class="btn btn-quiet btn-wide" id="btnSignOut">Sign out</button>
+    </div>
+  </div>
+
+  <main class="app">
+    <!-- Left: the deck -->
+    <section class="deck" aria-label="Download status">
+      <div class="turntable" id="turntable" data-state="idle">
+        <svg class="ring" viewBox="0 0 300 300" aria-hidden="true">
+          <circle class="ring-track" cx="150" cy="150" r="144"/>
+          <circle class="ring-fill" id="ringFill" cx="150" cy="150" r="144"/>
+        </svg>
+        <div class="record">
+          <div class="disc" id="disc">
+            <div class="label">
+              <img id="labelArt" alt="" hidden>
+              <span class="label-text">Sonora</span>
+              <span class="spindle"></span>
+            </div>
+          </div>
+          <div class="sheen"></div>
+        </div>
+        <svg class="tonearm" id="tonearm" viewBox="0 0 120 240" aria-hidden="true">
+          <circle cx="92" cy="30" r="20" class="arm-base"/>
+          <circle cx="92" cy="30" r="8" class="arm-pivot"/>
+          <path d="M92 30 L92 150 Q92 178 70 196" class="arm-rod"/>
+          <rect x="54" y="190" width="26" height="34" rx="5" transform="rotate(38 67 207)" class="arm-head"/>
+        </svg>
+      </div>
+
+      <div class="status" aria-live="polite">
+        <p class="status-main" id="statusMain">Ready when you are</p>
+        <p class="status-sub" id="statusSub">Paste a link to start</p>
+      </div>
+
+      <button class="save-card" id="saveCard" aria-haspopup="dialog">
+        <span class="tile"><svg viewBox="0 0 24 24"><use href="#i-folder" id="saveIcon"/></svg></span>
+        <span class="save-text">
+          <span class="save-where" id="saveWhere">Music folder</span>
+          <span class="save-how" id="saveHow"></span>
+        </span>
+        <svg viewBox="0 0 24 24" class="chev"><use href="#i-chev"/></svg>
+      </button>
+    </section>
+
+    <!-- Right: the crate -->
+    <section class="crate" aria-label="Songs">
+      <form class="search" id="searchForm" autocomplete="off">
+        <input id="urlInput" type="text" spellcheck="false"
+               placeholder="Paste a YouTube song or playlist link" aria-label="YouTube link">
+        <button class="btn btn-primary" id="btnFetch" type="submit">
+          <span class="btn-label">Find songs</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+      </form>
+      <div class="shortcuts">
+        <button class="chip" data-liked="videos">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16.5s-6-3.6-6-8.1A3.4 3.4 0 0 1 10 6.2a3.4 3.4 0 0 1 6 2.2c0 4.5-6 8.1-6 8.1z"/></svg>
+          Liked videos
+        </button>
+        <button class="chip" data-liked="music">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 14.5V5l8-1.5v9"/><circle cx="6" cy="14.5" r="2"/><circle cx="14" cy="12.5" r="2"/></svg>
+          Liked music
+        </button>
+      </div>
+
+      <div class="panel">
+        <div class="empty" id="empty">
+          <h1>Your music,<br><span>ready for the road.</span></h1>
+          <p>Paste a song, album or playlist link from YouTube or YouTube Music. Sonora lists every track first, then saves them as files that play anywhere, including your car.</p>
+          <ul>
+            <li><kbd>Ctrl</kbd><kbd>V</kbd> anywhere pastes and searches</li>
+            <li>Plug in your USB drive and Sonora adds only the songs it doesn’t have yet</li>
+          </ul>
+        </div>
+
+        <div class="result" id="result" hidden>
+          <div class="result-head">
+            <div class="result-titles">
+              <h2 id="resultTitle"></h2>
+              <p id="resultMeta"></p>
+            </div>
+            <div class="result-actions">
+              <div class="bucket" id="bucketWrap" hidden>
+                <button class="btn btn-outline" id="bucketBtn" aria-haspopup="listbox" aria-expanded="false">
+                  <svg viewBox="0 0 24 24"><use href="#i-tag" id="bucketIcon"/></svg>
+                  <span id="bucketLabel"></span>
+                  <svg viewBox="0 0 24 24" class="down"><use href="#i-down"/></svg>
+                </button>
+                <div class="menu" id="bucketMenu" role="listbox" hidden></div>
+              </div>
+              <button class="btn btn-primary" id="btnDownload"><span class="btn-label" id="downloadLabel">Download</span></button>
+            </div>
+          </div>
+          <p class="dest" id="dest"><svg viewBox="0 0 24 24"><use href="#i-folder"/></svg><span id="destText"></span></p>
+          <div class="list-tools">
+            <button class="link" id="btnSelectAll">Select all</button>
+            <button class="link" id="btnSelectNone">Select none</button>
+            <span class="list-note" id="listNote"></span>
+          </div>
+          <ol class="tracks" id="tracks"></ol>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Save settings -->
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="sheet" id="sheet" role="dialog" aria-label="Save settings" aria-modal="true" hidden>
+    <div class="sheet-head">
+      <h2>Save settings</h2>
+      <button class="icon-btn" id="sheetClose" aria-label="Close"><svg viewBox="0 0 24 24"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="sheet-body">
+      <section class="group">
+        <h3>Save to</h3>
+        <div class="dest-list" id="destList"></div>
+      </section>
+
+      <section class="group">
+        <h3>Sort into folders</h3>
+        <div class="sort-grid" id="sortGrid" role="radiogroup" aria-label="Sort into folders">
+          <button role="radio" data-sort="playlist"><svg viewBox="0 0 24 24"><use href="#i-list"/></svg>Playlist</button>
+          <button role="radio" data-sort="artist"><svg viewBox="0 0 24 24"><use href="#i-person"/></svg>Artist</button>
+          <button role="radio" data-sort="genre"><svg viewBox="0 0 24 24"><use href="#i-tag"/></svg>Genre</button>
+          <button role="radio" data-sort="language"><svg viewBox="0 0 24 24"><use href="#i-globe"/></svg>Language</button>
+          <button role="radio" data-sort="custom"><svg viewBox="0 0 24 24"><use href="#i-star"/></svg>My folders</button>
+          <button role="radio" data-sort="none"><svg viewBox="0 0 24 24"><use href="#i-stack"/></svg>Don't sort</button>
+        </div>
+        <p class="note" id="sortNote"></p>
+        <div class="buckets" id="buckets"></div>
+      </section>
+
+      <section class="group">
+        <label class="row-toggle big">
+          <span class="tile"><svg viewBox="0 0 24 24"><use href="#i-car"/></svg></span>
+          <span class="row-text">
+            <span class="row-title">Car stereo mode</span>
+            <span class="row-sub">MP3 files with tags, cover art and file names that car stereos read reliably.</span>
+          </span>
+          <input type="checkbox" id="optCar">
+          <span class="switch"><span></span></span>
+        </label>
+        <div class="car-extras" id="carExtras">
+          <label class="row-toggle">
+            <span class="row-text"><span class="row-title">Number songs in playlist order</span>
+              <span class="row-sub">Most stereos play files in name order, so 01, 02, 03 keeps the playlist order.</span></span>
+            <input type="checkbox" id="optNumbers">
+            <span class="switch"><span></span></span>
+          </label>
+          <label class="row-toggle">
+            <span class="row-text"><span class="row-title">Even out the volume</span>
+              <span class="row-sub">No more reaching for the knob between songs. Takes longer to save.</span></span>
+            <input type="checkbox" id="optLevel">
+            <span class="switch"><span></span></span>
+          </label>
+        </div>
+      </section>
+
+      <section class="group">
+        <h3>Sound</h3>
+        <div class="field">
+          <span class="field-name" id="fmtName">Format</span>
+          <div class="segmented" id="fmtSeg" role="radiogroup" aria-labelledby="fmtName">
+            <span class="seg-thumb"></span>
+            <button role="radio" data-value="mp3">MP3</button>
+            <button role="radio" data-value="m4a">M4A</button>
+            <button role="radio" data-value="opus">Opus</button>
+          </div>
+        </div>
+        <div class="field" id="qualityField">
+          <span class="field-name" id="qName">Bitrate</span>
+          <div class="segmented" id="qSeg" role="radiogroup" aria-labelledby="qName">
+            <span class="seg-thumb"></span>
+            <button role="radio" data-value="320">320</button>
+            <button role="radio" data-value="256">256</button>
+            <button role="radio" data-value="192">192</button>
+            <button role="radio" data-value="128">128</button>
+          </div>
+        </div>
+        <p class="note" id="fmtHint"></p>
+      </section>
+
+      <section class="group">
+        <label class="row-toggle">
+          <span class="row-text"><span class="row-title">Tidy song names</span>
+            <span class="row-sub">“Arijit Singh - Tum Hi Ho” instead of “Tum Hi Ho (Official Video) | Aashiqui 2”.</span></span>
+          <input type="checkbox" id="optTidy">
+          <span class="switch"><span></span></span>
+        </label>
+        <label class="row-toggle">
+          <span class="row-text"><span class="row-title">Skip songs already saved</span>
+            <span class="row-sub">Handy for topping up a playlist. Songs you deleted get saved again.</span></span>
+          <input type="checkbox" id="optSkip">
+          <span class="switch"><span></span></span>
+        </label>
+        <label class="row-toggle">
+          <span class="row-text"><span class="row-title">Top up USB drives when plugged in</span>
+            <span class="row-sub">Sonora checks which songs are already on the drive, then adds only the new ones from the playlists you saved there.</span></span>
+          <input type="checkbox" id="optSync">
+          <span class="switch"><span></span></span>
+        </label>
+      </section>
+    </div>
+    <div class="sheet-foot">
+      <button class="btn btn-primary btn-wide" id="sheetDone">Done</button>
+    </div>
+  </aside>
+
+  <!-- Themes -->
+  <aside class="sheet" id="themeSheet" role="dialog" aria-label="Themes" aria-modal="true" hidden>
+    <div class="sheet-head">
+      <div class="editor-head">
+        <button class="icon-btn" id="themeBack" aria-label="Back to themes" hidden><svg viewBox="0 0 24 24"><use href="#i-back"/></svg></button>
+        <h2 id="themeTitle">Themes</h2>
+      </div>
+      <button class="icon-btn" id="themeClose" aria-label="Close"><svg viewBox="0 0 24 24"><use href="#i-x"/></svg></button>
+    </div>
+
+    <div class="sheet-body" id="themeList">
+      <section class="group">
+        <h3>Built in</h3>
+        <div class="theme-grid" id="presetGrid" role="radiogroup" aria-label="Built-in themes"></div>
+      </section>
+      <section class="group">
+        <h3>Your themes</h3>
+        <div class="theme-grid" id="customGrid" role="radiogroup" aria-label="Your themes"></div>
+      </section>
+    </div>
+
+    <form class="sheet-body" id="themeEditor" autocomplete="off" hidden>
+      <section class="group">
+        <h3><label for="themeName">Name</label></h3>
+        <input class="name-input" id="themeName" maxlength="32" spellcheck="false" placeholder="My theme">
+      </section>
+      <section class="group">
+        <h3>Colours</h3>
+        <div id="colorRows"></div>
+        <p class="note contrast-note" id="contrastNote"></p>
+      </section>
+      <section class="group">
+        <h3>Start from</h3>
+        <div class="start-from" id="startFrom"></div>
+        <p class="note">Copies a built-in theme's colours so you can tweak them.</p>
+      </section>
+    </form>
+
+    <div class="sheet-foot" id="themeFootList">
+      <button class="btn btn-primary btn-wide" id="themeDone">Done</button>
+    </div>
+    <div class="sheet-foot split" id="themeFootEdit" hidden>
+      <button class="btn btn-ghost" id="themeCancel" type="button">Cancel</button>
+      <button class="btn btn-primary" id="themeSave" type="button">Save theme</button>
+    </div>
+  </aside>
+
+  <div class="toasts" id="toasts" aria-live="assertive"></div>
+
+  <template id="trackTpl">
+    <li class="track" data-status="queued">
+      <button class="pick" aria-label="Include this song" aria-pressed="true"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></button>
+      <div class="thumb">
+        <img loading="lazy" decoding="async" alt="">
+        <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+      </div>
+      <div class="track-text">
+        <span class="track-title"></span>
+        <span class="track-channel"></span>
+      </div>
+      <span class="track-time"></span>
+      <span class="track-state"></span>
+      <span class="track-bar"><span></span></span>
+    </li>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

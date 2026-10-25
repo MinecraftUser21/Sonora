@@ -1,0 +1,6 @@
+yt-dlp==2026.10.21
+yt-dlp-ejs==0.8.0
+pywebview==6.2.1
+mutagen==1.48.1
+anyascii==0.3.3
+pyinstaller==6.22.3

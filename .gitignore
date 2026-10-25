@@ -1,0 +1,11 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# PyInstaller output
+build/
+dist/
+
+# ffmpeg, ffprobe and deno binaries: too big for git, see README
+vendor/bin/
